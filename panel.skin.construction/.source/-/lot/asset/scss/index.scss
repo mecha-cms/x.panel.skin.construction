@@ -362,7 +362,7 @@ $color-back-alert: (
       background: $color-back-icon-folder;
     }
     &::after {
-      border-top-color: darken($color-back-icon-folder, 10%);
+      background: darken($color-back-icon-folder, 10%);
     }
   }
 }

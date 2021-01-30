@@ -275,7 +275,7 @@ caption {
 
 .lot\:file .is\:folder::after,
 .lot\:page .is\:folder::after {
-  border-top-color: #aa0000;
+  background: #aa0000;
 }
 
 .lot\:input .button {
