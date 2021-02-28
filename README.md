@@ -8,6 +8,10 @@ Construction Skin for [Panel](https://github.com/mecha-cms/x.panel)
 Release Notes
 -------------
 
+### 2.1.0
+
+ - Updated for Panel 2.6.0.
+
 ### 2.0.0
 
  - Make this skin as separate extension.

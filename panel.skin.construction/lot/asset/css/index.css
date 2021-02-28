@@ -190,9 +190,22 @@ caption {
 }
 
 .lot\:bar > ul > li > a:focus,
-.lot\:bar > ul > li > a:active,
-.lot\:bar > ul > li.is\:active > a {
+.lot\:bar > ul > li > a:active, .lot\:bar > ul > li.is\:current {
   color: #e6e6e6;
+}
+
+.lot\:bar > ul > li > a:focus > a,
+.lot\:bar > ul > li > a:active > a, .lot\:bar > ul > li.is\:current > a {
+  color: inherit;
+}
+
+.lot\:bar > ul > li.is\:current.not\:active {
+  opacity: 1;
+  color: #cccccc;
+}
+
+.lot\:bar > ul > li.is\:current.not\:active > a {
+  color: inherit;
 }
 
 .lot\:bar > ul > li > a {
@@ -216,79 +229,77 @@ caption {
   color: #fff;
 }
 
-.lot\:bar .js\:alert.is\:active a span {
-  color: #0f0;
-}
-
-.lot\:file li,
-.lot\:page li {
+.lot\:files li,
+.lot\:pages li {
   background: #fff;
   border: 0 solid #fff;
 }
 
-.lot\:file li:focus, .lot\:file li:hover,
-.lot\:page li:focus,
-.lot\:page li:hover {
+.lot\:files li:focus, .lot\:files li:hover,
+.lot\:pages li:focus,
+.lot\:pages li:hover {
   background: #eef;
   border-color: #eef;
 }
 
-.lot\:file h3,
-.lot\:page h3 {
+.lot\:files h3,
+.lot\:pages h3 {
   color: inherit;
 }
 
-.lot\:file .lot\:task,
-.lot\:file .lot\:task > *,
-.lot\:page .lot\:task,
-.lot\:page .lot\:task > * {
-  margin: 0;
+.lot\:files .lot\:tasks,
+.lot\:pages .lot\:tasks {
+  gap: 0;
 }
 
-.lot\:file .lot\:task > * .title span,
-.lot\:page .lot\:task > * .title span {
+.lot\:files .lot\:tasks > * .title span,
+.lot\:pages .lot\:tasks > * .title span {
   display: none;
 }
 
-.lot\:file .is\:active,
-.lot\:page .is\:active {
+.lot\:files .is\:active,
+.lot\:pages .is\:active {
   background: #fec;
   border-color: #fec;
 }
 
-.lot\:file .is\:file::before,
-.lot\:page .is\:file::before {
+.lot\:files .is\:file::before,
+.lot\:pages .is\:file::before {
   background: #fea;
   border-color: #000;
 }
 
-.lot\:file .is\:file::after,
-.lot\:page .is\:file::after {
+.lot\:files .is\:file::after,
+.lot\:pages .is\:file::after {
   border-color: #000;
   border-top-color: inherit;
   border-right-color: inherit;
 }
 
-.lot\:file .is\:folder::before,
-.lot\:page .is\:folder::before {
+.lot\:files .is\:folder::before,
+.lot\:pages .is\:folder::before {
   background: #d00;
 }
 
-.lot\:file .is\:folder::after,
-.lot\:page .is\:folder::after {
+.lot\:files .is\:folder::after,
+.lot\:pages .is\:folder::after {
   background: #aa0000;
 }
 
-.lot\:input .button {
+.field > label + div .lot\:f .button,
+.field > label + br + div .lot\:f .button {
   background: #bdf;
   box-shadow: none;
 }
 
-.lot\:input .button:focus, .lot\:input .button:active {
+.field > label + div .lot\:f .button:focus, .field > label + div .lot\:f .button:active,
+.field > label + br + div .lot\:f .button:focus,
+.field > label + br + div .lot\:f .button:active {
   background: white;
 }
 
-.lot\:input .fix {
+.field > label + div .lot\:f .fix,
+.field > label + br + div .lot\:f .fix {
   background: #dda;
 }
 
@@ -311,10 +322,6 @@ caption {
 
 .lot\:menu li a:active {
   background: #e4e4ff;
-}
-
-.lot\:menu li.is\:active a.not\:active {
-  background: #eee;
 }
 
 .lot\:menu li.is\:current a.not\:active {
@@ -364,42 +371,27 @@ caption {
   color: #fff;
 }
 
-.lot\:tab > nav li {
+.lot\:tabs > nav li {
   box-shadow: inset 0 3px 0 #fcc;
 }
 
-.lot\:tab > nav li.has\:link {
+.lot\:tabs > nav li.has\:link {
   box-shadow: inset 0 3px 0 #cfc;
 }
 
-.lot\:tab > nav li.is\:current {
+.lot\:tabs > nav li.is\:current {
   box-shadow: inset 0 3px 0 #ccf;
 }
 
-.lot\:tab > nav li.not\:active {
+.lot\:tabs > nav li.not\:active {
   opacity: 1;
 }
 
-.lot\:tab > nav li a.not\:active {
+.lot\:tabs > nav li a.not\:active {
   opacity: 1;
   background: white;
   color: #888;
   box-shadow: inset 0 3px 0 #d5d5d5;
-}
-
-.lot\:table .table th,
-.lot\:table .table td {
-  background: #eef;
-  color: inherit;
-  cursor: default;
-}
-
-.lot\:table .table th {
-  background: #ccd;
-}
-
-.lot\:table .table tbody tr:hover td {
-  background: #dde;
 }
 
 .input[type='checkbox'] {
@@ -508,17 +500,17 @@ label.is\:lock > .input[type='radio'] + span {
   .field > label {
     font-weight: bolder;
   }
-  .lot\:tab > nav li {
+  .lot\:tabs > nav li {
     background: none;
     box-shadow: none;
   }
-  .lot\:tab > nav li.is\:active {
+  .lot\:tabs > nav li.is\:active {
     box-shadow: none;
   }
-  .lot\:tab > nav li.is\:active a {
+  .lot\:tabs > nav li.is\:active a {
     color: inherit;
   }
-  .lot\:tab > nav li:not(.has\:link) a {
+  .lot\:tabs > nav li:not(.has\:link) a {
     color: #009;
   }
 }

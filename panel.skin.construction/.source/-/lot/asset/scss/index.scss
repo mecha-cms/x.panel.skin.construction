@@ -272,8 +272,20 @@ $color-back-alert: (
     > li {
       > a:focus,
       > a:active,
-      &.is\:active > a {
+      &.is\:current {
         color: darken($color-back, 10%);
+        > a {
+          color: inherit;
+        }
+      }
+      &.is\:current {
+        &.not\:active {
+          opacity: 1;
+          color: darken($color-back, 20%);
+          > a {
+            color: inherit;
+          }
+        }
       }
       > a {
         color: darken($color-back, 20%);
@@ -305,19 +317,10 @@ $color-back-alert: (
       color: $color-back;
     }
   }
-  .js\:alert {
-    &.is\:active {
-      a {
-        span {
-          color: #0f0;
-        }
-      }
-    }
-  }
 }
 
-.lot\:file,
-.lot\:page {
+.lot\:files,
+.lot\:pages {
   li {
     background: $color-back;
     border: 0 solid $color-back;
@@ -330,11 +333,8 @@ $color-back-alert: (
   h3 {
     color: inherit;
   }
-  .lot\:task {
-    &,
-    > * {
-      margin: 0;
-    }
+  .lot\:tasks {
+    gap: 0;
     > * {
       .title {
         span {
@@ -368,17 +368,24 @@ $color-back-alert: (
   }
 }
 
-.lot\:input {
-  .button {
-    background: $color-back-button-fix;
-    box-shadow: none;
-    &:focus,
-    &:active {
-      background: lighten($color-back-button-fix, 20%);
+.field {
+  > label {
+    + div,
+    + br + div {
+      .lot\:f {
+        .button {
+          background: $color-back-button-fix;
+          box-shadow: none;
+          &:focus,
+          &:active {
+            background: lighten($color-back-button-fix, 20%);
+          }
+        }
+        .fix {
+          background: $color-back-input-fix;
+        }
+      }
     }
-  }
-  .fix {
-    background: $color-back-input-fix;
   }
 }
 
@@ -407,13 +414,6 @@ $color-back-alert: (
     }
     a:active {
       background: darken($color-back-menu-hover, 2%);
-    }
-    &.is\:active {
-      a {
-        &.not\:active {
-          background: #eee; // TODO
-        }
-      }
     }
     &.is\:current {
       a {
@@ -473,7 +473,7 @@ $color-back-alert: (
   }
 }
 
-.lot\:tab {
+.lot\:tabs {
   > nav {
     li {
       box-shadow: inset 0 3px 0 $color-accent-tab;
@@ -492,29 +492,6 @@ $color-back-alert: (
           background: lighten($color-secondary, 50%);
           color: $color-secondary;
           box-shadow: inset 0 3px 0 lighten($color-secondary, 30%);
-        }
-      }
-    }
-  }
-}
-
-.lot\:table {
-  .table {
-    th,
-    td {
-      background: $color-back-table-data;
-      color: inherit;
-      cursor: default;
-    }
-    th {
-      background: $color-back-table-title;
-    }
-    tbody {
-      tr {
-        &:hover {
-          td {
-            background: $color-back-table-data-hover;
-          }
         }
       }
     }
@@ -643,7 +620,7 @@ label {
       font-weight: bolder;
     }
   }
-  .lot\:tab {
+  .lot\:tabs {
     > nav {
       li {
         background: none;
