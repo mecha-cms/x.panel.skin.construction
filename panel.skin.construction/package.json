@@ -1,16 +1,10 @@
 {
   "devDependencies": {
-    "@taufik-nurrohman/file": "^0.0.7",
-    "@taufik-nurrohman/folder": "^0.0.5",
-    "@taufik-nurrohman/is": "^0.1.0",
-    "clean-css": "^4.2.3",
-    "node-sass": "^5.0.0",
-    "sass-module-importer": "^1.4.0"
+    "@taufik-nurrohman/factory": "^0.1.18"
   },
   "private": true,
   "scripts": {
-    "pack": "npm run css",
-    "css": "node .source/scss.mjs"
+    "pack": "pack --clean=false --from=.github/source --to=."
   },
   "type": "module"
 }
