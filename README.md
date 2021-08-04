@@ -1,5 +1,5 @@
-Construction Skin for [Panel](https://github.com/mecha-cms/x.panel)
-===================================================================
+Construction Skin for Mecha&rsquo;s [Panel](https://github.com/mecha-cms/x.panel)
+=================================================================================
 
 ![Construction](https://user-images.githubusercontent.com/1669261/106356258-f8484d00-6330-11eb-9d75-7960614c9070.png)
 
