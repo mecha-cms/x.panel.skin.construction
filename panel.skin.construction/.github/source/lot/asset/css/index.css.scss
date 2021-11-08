@@ -1,60 +1,83 @@
-@import url('//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400i,700i|Roboto+Mono:400,700,400i,700i');
+$color-input--invalid: #f00;
+$color-input--valid: #090;
 
+:root {
+  --color-bar-link--disabled: #{darken(#fff, 20%)};
+  --color-bar-link--hover: #{darken(#fff, 20%)};
+  --color-bar-link: #{darken(#fff, 20%)};
+  --color-bar: #{darken(#fff, 40%)};
+  --color-button: #fff;
+  --color-code-block: #fee;
+  --color-description: #888;
+  --color-input--invalid: #{$color-input--invalid};
+  --color-input--valid: #{$color-input--valid};
+  --color-input: #000;
+  --color-link--hover: #009;
+  --color-link: #009;
+  --color-title: #66a;
+  --color: #000;
+  --fill-alert--error: #fcc;
+  --fill-alert--success: #cfc;
+  --fill-alert-info: #ccf;
+  --fill-alert: #eee;
+  --fill-bar: #{lighten(#000, 10%)};
+  --fill-button--hover: #009;
+  --fill-button: #009;
+  --fill-code-block: #333;
+  --fill-file-icon: #fea;
+  --fill-fix: #dda;
+  --fill-folder-icon: #d00;
+  --fill-input: #ffa;
+  --fill-menu-link--current: #d00;
+  --fill-menu-link--hover: #eef;
+  --fill: #fff;
+  --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25);
+  --shadow-tab--current: inset 0 3px 0 #ccf;
+  --shadow-tab-link: inset 0 3px 0 #cfc;
+  --shadow-tab: inset 0 3px 0 #fcc;
+  --stroke-file-icon: #000;
+  --stroke-input--invalid: #{$color-input--invalid};
+  --stroke-input--valid: #{$color-input--valid};
+  --stroke-input: #000;
+  --stroke: #888;
+  @each $v in (current, focus, active) {
+    --color-bar-link--#{$v}: #{darken(#fff, 10%)};
+  }
+  @each $v in (active, disabled, focus, hover) {
+    --color-button--#{$v}: #fff;
+  }
+  @each $v in (active, focus) {
+    --fill-button--#{$v}: #900;
+  }
+  @each $v in (active, disabled, focus, hover) {
+    --color-input--#{$v}: #000;
+    --fill-input--#{$v}: #ffa;
+    --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25);
+    --stroke-input--#{$v}: #000;
+  }
+  @each $v in (active, focus) {
+    --color-link--#{$v}: #900;
+  }
+  @each $v in (file, folder, page) {
+    --fill-#{$v}--current: #fec;
+    --fill-#{$v}--hover: #eef;
+  }
+}
 
-$x: 24px;
-$y: 24px;
+:focus-visible {
+  outline: 0;
+}
 
-$z: 16px;
-$h: $y;
+.button,
+.input,
+.output,
+.select,
+.textarea {
+  &:focus {
+    @extend :focus-visible;
+  }
+}
 
-$sans: 'Roboto Condensed', Roboto, sans-serif;
-$mono: 'Roboto Mono', 'Courier New', Courier, 'Nimbus Mono L', monospace;
-
-$color: #000;
-$color-back: #fff;
-
-$color-back-alert: #eee;
-
-$color-back-input: #ffa;
-$color-back-input-fix: #dda;
-$color-back-button-fix: #bdf;
-
-$color-is-error: #f00;
-$color-is-success: #090;
-
-$color-link: #009;
-$color-link-focus: #900;
-$color-link-active: #900;
-
-$color-secondary: #888;
-
-$color-title: #66a;
-
-$color-button: $color-back;
-
-$color-back-button: $color-link;
-$color-back-button-focus: $color-link-focus;
-$color-back-button-active: $color-link-active;
-
-$color-back-list-hover: #eef;
-$color-back-list-active: #fec;
-
-$color-back-icon-file: #fea;
-$color-back-icon-folder: #d00;
-
-$color-back-menu-hover: #eef;
-$color-back-menu-current: #d00;
-
-$color-back-table-data: #eef;
-$color-back-table-title: #ccd;
-$color-back-table-data-hover: #dde;
-
-$color-back-code-block: #333;
-$color-back-text-block: #fee;
-
-$color-accent-tab: #fcc;
-$color-accent-tab-current: #ccf;
-$color-accent-tab-link: #cfc;
 
 $color-back-item: #08a;
 $color-back-items: #090;
@@ -63,222 +86,56 @@ $color-back-toggle: #c00;
 $color-back-toggle-active: #090;
 
 
-:root {
-  font-family: $sans;
-  background: $color-back;
-  border-color: $color-secondary;
-  color: $color;
-}
-
-a[href] {
-  color: $color-link;
-  &:focus {
-    color: $color-link-focus;
-  }
-  &:active {
-    color: $color-link-active;
-  }
-}
-
-pre {
-  &.is\:text {
-    background: $color-back-text-block;
-    code {
-      background: none;
-      color: inherit;
-    }
-  }
-  code {
-    background: $color-back-code-block;
-    color: $color-back;
-  }
-}
-
-code,
-.code {
-  font-family: $mono;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: $color-title;
+  color: var(--color-title);
 }
 
 blockquote,
 figcaption,
-caption {
-  color: $color-secondary;
-}
-
-$color-back-alert: (
-  'error': #fcc,
-  'info': #ccf,
-  'success': #cfc
-);
-
-.alert {
-  p {
-    background: darken($color-back, 5%);
-    padding: ($z * .75) ($z * 1.25);
-  }
-  @each $k, $v in $color-back-alert {
-    .#{$k} {
-      background: $v;
-      color: inherit;
-    }
-  }
-}
-
-.button,
-.input,
-.select,
-.textarea {
-  background: $color-back-input;
-  color: $color;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25);
-}
-
-.button {
-  background: $color-back-button;
-  color: $color-button;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-  &:focus {
-    background: $color-back-button-focus;
-    color: $color-button;
-  }
-  &:active {
-    background: $color-back-button-active;
-    color: $color-button;
-  }
-  &[href] {
-    &,
-    &:focus,
-    &:active {
-      color: $color-button;
-    }
-  }
-}
-
-.button {
-  &.is\:text {
-    &,
-    &:focus,
-    &:active {
-      background: none;
-      border: 0;
-      color: $color-link;
-      border-radius: 0;
-      box-shadow: none;
-    }
-    &:focus {
-      color: $color-link-focus;
-    }
-    &:active {
-      color: $color-link-active;
-    }
-  }
-}
-
-.button,
-.input,
-.select,
-.textarea {
-  &.is\:locked {
-    box-shadow: none;
-  }
+caption,
+.description {
+  color: var(--color-description);
 }
 
 [pattern],
 [required] {
   &:focus {
     &:valid {
-      color: $color-is-success;
-      border-color: $color-is-success;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 0 0 2px rgba($color-is-success, .25);
+      --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25), 0 0 0 2px #{rgba($color-input--valid, .25)};
     }
     &:invalid {
-      color: $color-is-error;
-      border-color: $color-is-error;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25), 0 0 0 2px rgba($color-is-error, .25);
+      --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25), 0 0 0 2px #{rgba($color-input--invalid, .25)};
     }
   }
 }
 
-.input {
-  &[type='checkbox'],
-  &[type='color'],
-  &[type='image'],
-  &[type='radio'],
-  &[type='range'] {
-    background: none;
-    border: 0;
-    padding: 0;
-    box-shadow: none;
-  }
-  &[type='file'],
-  &[type='range'] {
-    background: none;
-    box-shadow: none;
-  }
-}
+// .title {
+//   span {
+//     small {
+//       color: lighten($color-back-menu-current, 20%);
+//     }
+//   }
+// }
 
-.select {
-  optgroup,
-  option {
-    background: $color-back;
-  }
-}
-
-.description {
-  color: $color-secondary;
-}
-
-.title {
-  span {
-    small {
-      color: lighten($color-back-menu-current, 20%);
-    }
-  }
-}
-
-.is\:separator {
+.as\:separator {
   opacity: .125;
 }
 
 .lot\:bar {
-  background: lighten($color, 10%);
-  color: darken($color-back, 40%);
   .lot\:links {
     > ul {
       > li {
-        > a:focus,
-        > a:active,
-        &.is\:current {
-          color: darken($color-back, 10%);
-          > a {
-            color: inherit;
-          }
-        }
-        &.is\:current {
-          &.not\:active {
-            opacity: 1;
-            color: darken($color-back, 20%);
-            > a {
-              color: inherit;
-            }
-          }
-        }
         > a {
-          color: darken($color-back, 20%);
           &:focus {
             > .title {
               svg {
                 &.caret {
-                  color: darken($color-back, 50%);
+                  color: darken(#fff, 50%);
                 }
               }
             }
@@ -286,354 +143,134 @@ $color-back-alert: (
           > .title {
             svg {
               &.caret {
-                color: darken($color-back, 60%);
+                color: darken(#fff, 60%);
               }
             }
           }
-        }
-        &.is\:separator {
-          background: $color-back;
         }
       }
     }
   }
   .lot\:field {
     .input {
-      background: $color;
-      color: $color-back;
+      // background: $color;
+      // color: $color-back;
     }
   }
 }
 
-.lot\:file,
-.lot\:folder,
-.lot\:page {
-  background: $color-back;
-  border: 0 solid $color-back;
-  &:focus,
-  &:hover {
-    background: $color-back-list-hover;
-    border-color: $color-back-list-hover;
-  }
-  h3 {
-    color: inherit;
-  }
-  .lot\:tasks {
-    gap: 0;
-    > * {
-      .title {
-        span {
-          display: none;
-        }
-      }
-    }
-  }
-  &.is\:current {
-    background: $color-back-list-active;
-    border-color: $color-back-list-active;
-  }
-}
+// .input {
+//   &[type='checkbox'] {
+//     background: $color-back-items;
+//     &:checked {
+//       &::before {
+//         box-shadow: none;
+//       }
+//     }
+//     &:focus {
+//       background: darken($color-back-items, 10%);
+//     }
+//   }
+//   &[type='radio'] {
+//     background: $color-back-item;
+//     &:focus {
+//       background: darken($color-back-item, 10%);
+//     }
+//   }
+//   &[type='checkbox'],
+//   &[type='radio'] {
+//     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .125);
+//     &[disabled] {
+//       background: $color-secondary;
+//     }
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       top: 2px;
+//       right: 2px;
+//       bottom: 2px;
+//       left: 2px;
+//       background: $color-back;
+//       box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+//     }
+//   }
+//   &[type='range'] {
+//     &::-webkit-slider-thumb {
+//       background: $color-back-button;
+//       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+//     }
+//     &::-moz-range-thumb {
+//       background: $color-back-button;
+//       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+//     }
+//     &:not(.not\:active) {
+//       &:focus {
+//         &::-webkit-slider-thumb {
+//           background: $color-back-button-focus;
+//         }
+//         &::-moz-range-thumb {
+//           background: $color-back-button-focus;
+//         }
+//       }
+//       &:active {
+//         &::-webkit-slider-thumb {
+//           background: $color-back-button-active;
+//         }
+//         &::-moz-range-thumb {
+//           background: $color-back-button-active;
+//         }
+//       }
+//     }
+//   }
+// }
 
-.is\:file {
-  &::before {
-    background: $color-back-icon-file;
-    border-color: $color;
-  }
-  &::after {
-    border-color: $color;
-    border-top-color: inherit;
-    border-right-color: inherit;
-  }
-}
-.is\:folder {
-  &::before {
-    background: $color-back-icon-folder;
-  }
-  &::after {
-    background: darken($color-back-icon-folder, 10%);
-  }
-}
+// label {
+//   &.is\:locked {
+//     opacity: 1;
+//     > .input {
+//       &[type='checkbox'] {
+//         + span {
+//           color: darken($color-back-items, 10%);
+//         }
+//       }
+//       &[type='radio'] {
+//         + span {
+//           color: darken($color-back-item, 10%);
+//         }
+//       }
+//     }
+//   }
+// }
 
-.lot\:field {
-  > label {
-    + div,
-    + br + div {
-      .lot\:f,
-      .lot\:f .options {
-        .button {
-          background: $color-back-button-fix;
-          box-shadow: none;
-          &:focus,
-          &:active {
-            background: lighten($color-back-button-fix, 5%);
-          }
-        }
-        .fix {
-          background: $color-back-input-fix;
-        }
-      }
-    }
-  }
-  &.type\:option {
-    .option-picker {
-      background: $color-back-input;
-      color: $color;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25);
-      .option-picker__option {
-        // TODO
-      }
-    }
-  }
-  &.type\:query {
-    .tag-picker {
-      background: $color-back-input;
-      color: $color;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .25);
-      .tag-picker__tag {
-        &:not(.tag-picker__text) {
-          box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-        }
-      }
-      .tag-picker__tag-x {
-        color: $color-back;
-      }
-    }
-  }
-}
-
-.lot\:menu {
-  a {
-    &.not\:active {
-      &,
-      &:focus,
-      &:hover,
-      &:active {
-        background: lighten($color-secondary, 42%);
-        color: $color-secondary;
-        opacity: 1;
-      }
-    }
-  }
-  .lot\:menu {
-    background: $color-back;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, .05), 0 4px 8px rgba(0, 0, 0, .25);
-  }
-  li {
-    a:focus,
-    a:hover {
-      background: $color-back-menu-hover;
-    }
-    a:active {
-      background: darken($color-back-menu-hover, 2%);
-    }
-    &.is\:current {
-      a {
-        &.not\:active {
-          background: lighten($color-back-menu-current, 10%);
-        }
-      }
-      &.is\:active {
-        a {
-          &.not\:active {
-            background: darken(lighten($color-back-menu-current, 10%), 4%);
-          }
-        }
-      }
-      > a {
-        background: $color-back-menu-current;
-        color: $color-back;
-        &:focus,
-        &:hover {
-          background: darken($color-back-menu-current, 2%);
-          color: $color-back;
-        }
-        &:active {
-          background: darken($color-back-menu-current, 4%);
-        }
-      }
-    }
-    &.is\:separator {
-      background: $color;
-    }
-  }
-  .title {
-    span {
-      small {
-        background: lighten($color-back-menu-current, 5%);
-        color: $color-back;
-      }
-    }
-    svg {
-      &.caret {
-        color: $color;
-        opacity: .25;
-      }
-    }
-  }
-}
-
-.has\:menu {
-  .lot\:menu {
-    background: $color-back;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, .05), 0 4px 8px rgba(0, 0, 0, .25);
-  }
-}
-
-.lot\:pager {
-  > span {
-    > a {
-      background: $color-back-button;
-      color: $color-button;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-      &:focus {
-        background: $color-back-button-focus;
-        color: $color-button;
-      }
-      &:active {
-        background: $color-back-button-active;
-        color: $color-button;
-      }
-    }
-  }
-}
-
-.lot\:tabs {
-  .lot\:links {
-    li {
-      box-shadow: inset 0 3px 0 $color-accent-tab;
-      &.has\:link {
-        box-shadow: inset 0 3px 0 $color-accent-tab-link;
-      }
-      &.is\:current {
-        box-shadow: inset 0 3px 0 $color-accent-tab-current;
-      }
-      &.not\:active {
-        opacity: 1;
-      }
-      a {
-        &.not\:active {
-          opacity: 1;
-          background: lighten($color-secondary, 50%);
-          color: $color-secondary;
-          box-shadow: inset 0 3px 0 lighten($color-secondary, 30%);
-        }
-      }
-    }
-  }
-}
-
-.input {
-  &[type='checkbox'] {
-    background: $color-back-items;
-    &:checked {
-      &::before {
-        box-shadow: none;
-      }
-    }
-    &:focus {
-      background: darken($color-back-items, 10%);
-    }
-  }
-  &[type='radio'] {
-    background: $color-back-item;
-    &:focus {
-      background: darken($color-back-item, 10%);
-    }
-  }
-  &[type='checkbox'],
-  &[type='radio'] {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .125);
-    &[disabled] {
-      background: $color-secondary;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 2px;
-      right: 2px;
-      bottom: 2px;
-      left: 2px;
-      background: $color-back;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
-    }
-  }
-  &[type='range'] {
-    &::-webkit-slider-thumb {
-      background: $color-back-button;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-    }
-    &::-moz-range-thumb {
-      background: $color-back-button;
-      box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-    }
-    &:not(.not\:active) {
-      &:focus {
-        &::-webkit-slider-thumb {
-          background: $color-back-button-focus;
-        }
-        &::-moz-range-thumb {
-          background: $color-back-button-focus;
-        }
-      }
-      &:active {
-        &::-webkit-slider-thumb {
-          background: $color-back-button-active;
-        }
-        &::-moz-range-thumb {
-          background: $color-back-button-active;
-        }
-      }
-    }
-  }
-}
-
-label {
-  &.is\:locked {
-    opacity: 1;
-    > .input {
-      &[type='checkbox'] {
-        + span {
-          color: darken($color-back-items, 10%);
-        }
-      }
-      &[type='radio'] {
-        + span {
-          color: darken($color-back-item, 10%);
-        }
-      }
-    }
-  }
-}
-
-.field\:toggle {
-  .input {
-    &[type='checkbox'] {
-      background: $color-back-toggle;
-      &[disabled] {
-        background: $color-secondary;
-      }
-      &::before {
-        background: $color-back;
-      }
-      &:focus {
-        background: darken($color-back-toggle, 10%);
-      }
-      &:checked {
-        background: $color-back-toggle-active;
-        &:focus {
-          background: darken($color-back-toggle-active, 10%);
-        }
-      }
-    }
-  }
-}
+// .field\:toggle {
+//   .input {
+//     &[type='checkbox'] {
+//       background: $color-back-toggle;
+//       &[disabled] {
+//         background: $color-secondary;
+//       }
+//       &::before {
+//         background: $color-back;
+//       }
+//       &:focus {
+//         background: darken($color-back-toggle, 10%);
+//       }
+//       &:checked {
+//         background: $color-back-toggle-active;
+//         &:focus {
+//           background: darken($color-back-toggle-active, 10%);
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media (min-width: 719px) {
   .lot\:bar {
     .lot\:links {
       .is\:main {
-        background: $color-back;
-        color: $color;
+        background: var(--fill);
+        color: var(--color);
         &.is\:active {
           > a {
             background: inherit;
@@ -643,39 +280,11 @@ label {
           }
         }
         > a {
-          color: $color-link;
-          &:focus {
-            color: $color-link-focus;
-          }
-          &:active {
-            color: $color-link-active;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 720px) {
-  .lot\:field {
-    > label {
-      font-weight: bold;
-    }
-  }
-  .lot\:tabs {
-    .lot\:links {
-      li {
-        background: none;
-        box-shadow: none;
-        &.is\:active {
-          box-shadow: none;
-          a {
-            color: inherit;
-          }
-        }
-        &:not(.has\:link) {
-          a {
-            color: $color-link;
+          color: var(--color-link);
+          @each $v in (hover, focus, active) {
+            &:#{$v} {
+              color: var(--color-link--#{$v}, var(--color-link));
+            }
           }
         }
       }
