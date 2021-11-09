@@ -1,4 +1,5 @@
 :root {
+  --color-bar-caret: darken(#fff, 50%);
   --color-bar-link--disabled: #cccccc;
   --color-bar-link--hover: #cccccc;
   --color-bar-link: #cccccc;
@@ -11,6 +12,7 @@
   --color-input: #000;
   --color-link--hover: #009;
   --color-link: #009;
+  --color-menu-caret: darken(#fff, 50%);
   --color-title: #66a;
   --color: #000;
   --fill-alert--error: #fcc;
@@ -27,11 +29,15 @@
   --fill-input: #ffa;
   --fill-menu-link--current: #d00;
   --fill-menu-link--hover: #eef;
+  --fill-tag-picker__tag--focus: #a00;
+  --fill-tag-picker__tag: #f00;
   --fill: #fff;
+  --shadow-button: 0 1px 1px rgba(0, 0, 0, .25);
   --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25);
   --shadow-tab--current: inset 0 3px 0 #ccf;
   --shadow-tab-link: inset 0 3px 0 #cfc;
   --shadow-tab: inset 0 3px 0 #fcc;
+  --shadow-tag-picker__tag: 0 1px 1px rgba(0, 0, 0, .25);
   --stroke-file-icon: #000;
   --stroke-input--invalid: #f00;
   --stroke-input--valid: #090;
@@ -72,15 +78,6 @@
   --fill-page--hover: #eef;
 }
 
-:focus-visible,
-.button:focus,
-.input:focus,
-.output:focus,
-.select:focus,
-.textarea:focus {
-  outline: 0;
-}
-
 h1,
 h2,
 h3,
@@ -110,12 +107,56 @@ caption,
   opacity: 0.125;
 }
 
-.lot\:bar .lot\:links > ul > li > a:focus > .title svg.caret {
-  color: gray;
+.lot\:bar .lot\:field .input {
+  --color-input: var(--fill);
+  --fill-input: var(--color);
 }
-.lot\:bar .lot\:links > ul > li > a > .title svg.caret {
-  color: #666666;
+
+.input[type=checkbox] {
+  --fill-button--hover: #090;
+  --fill-button: #090;
 }
+.input[type=checkbox]:checked::before {
+  box-shadow: none;
+}
+.input[type=checkbox]:focus {
+  --fill-button--active: #006600;
+  --fill-button--focus: #006600;
+}
+.input[type=radio] {
+  --fill-button--hover: #08a;
+  --fill-button: #08a;
+}
+.input[type=radio]:focus {
+  --fill-button--active: #005f77;
+  --fill-button--focus: #005f77;
+}
+.input[type=checkbox],
+.input[type=radio] {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+.input[type=checkbox]::before,
+.input[type=radio]::before {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+
+.field\:toggle .input[type=checkbox] {
+  --fill-button--hover: #c00;
+  --fill-button: #c00;
+}
+.field\:toggle .input[type=checkbox]:focus {
+  --fill-button--active: #990000;
+  --fill-button--focus: #990000;
+}
+.field\:toggle .input[type=checkbox]:checked {
+  --fill-button--hover: #090;
+  --fill-button: #090;
+}
+.field\:toggle .input[type=checkbox]:checked:focus {
+  --fill-button--active: #006600;
+  --fill-button--focus: #006600;
+}
+
 @media (min-width: 719px) {
   .lot\:bar .lot\:links .is\:main {
     background: var(--fill);

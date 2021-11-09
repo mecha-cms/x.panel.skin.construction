@@ -2,6 +2,7 @@ $color-input--invalid: #f00;
 $color-input--valid: #090;
 
 :root {
+  --color-bar-caret: darken(#fff, 50%);
   --color-bar-link--disabled: #{darken(#fff, 20%)};
   --color-bar-link--hover: #{darken(#fff, 20%)};
   --color-bar-link: #{darken(#fff, 20%)};
@@ -14,6 +15,7 @@ $color-input--valid: #090;
   --color-input: #000;
   --color-link--hover: #009;
   --color-link: #009;
+  --color-menu-caret: darken(#fff, 50%);
   --color-title: #66a;
   --color: #000;
   --fill-alert--error: #fcc;
@@ -30,11 +32,15 @@ $color-input--valid: #090;
   --fill-input: #ffa;
   --fill-menu-link--current: #d00;
   --fill-menu-link--hover: #eef;
+  --fill-tag-picker__tag--focus: #a00;
+  --fill-tag-picker__tag: #f00;
   --fill: #fff;
+  --shadow-button: 0 1px 1px rgba(0, 0, 0, .25);
   --shadow-input: inset 0 1px 1px rgba(0, 0, 0, .25);
   --shadow-tab--current: inset 0 3px 0 #ccf;
   --shadow-tab-link: inset 0 3px 0 #cfc;
   --shadow-tab: inset 0 3px 0 #fcc;
+  --shadow-tag-picker__tag: 0 1px 1px rgba(0, 0, 0, .25);
   --stroke-file-icon: #000;
   --stroke-input--invalid: #{$color-input--invalid};
   --stroke-input--valid: #{$color-input--valid};
@@ -64,26 +70,11 @@ $color-input--valid: #090;
   }
 }
 
-:focus-visible {
-  outline: 0;
-}
+$fill-item: #08a;
+$fill-items: #090;
 
-.button,
-.input,
-.output,
-.select,
-.textarea {
-  &:focus {
-    @extend :focus-visible;
-  }
-}
-
-
-$color-back-item: #08a;
-$color-back-items: #090;
-
-$color-back-toggle: #c00;
-$color-back-toggle-active: #090;
+$fill-toggle--checked: #090;
+$fill-toggle: #c00;
 
 
 h1,
@@ -114,115 +105,49 @@ caption,
   }
 }
 
-// .title {
-//   span {
-//     small {
-//       color: lighten($color-back-menu-current, 20%);
-//     }
-//   }
-// }
-
 .as\:separator {
   opacity: .125;
 }
 
 .lot\:bar {
-  .lot\:links {
-    > ul {
-      > li {
-        > a {
-          &:focus {
-            > .title {
-              svg {
-                &.caret {
-                  color: darken(#fff, 50%);
-                }
-              }
-            }
-          }
-          > .title {
-            svg {
-              &.caret {
-                color: darken(#fff, 60%);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
   .lot\:field {
     .input {
-      // background: $color;
-      // color: $color-back;
+      --color-input: var(--fill);
+      --fill-input: var(--color);
     }
   }
 }
 
-// .input {
-//   &[type='checkbox'] {
-//     background: $color-back-items;
-//     &:checked {
-//       &::before {
-//         box-shadow: none;
-//       }
-//     }
-//     &:focus {
-//       background: darken($color-back-items, 10%);
-//     }
-//   }
-//   &[type='radio'] {
-//     background: $color-back-item;
-//     &:focus {
-//       background: darken($color-back-item, 10%);
-//     }
-//   }
-//   &[type='checkbox'],
-//   &[type='radio'] {
-//     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .125);
-//     &[disabled] {
-//       background: $color-secondary;
-//     }
-//     &::before {
-//       content: "";
-//       position: absolute;
-//       top: 2px;
-//       right: 2px;
-//       bottom: 2px;
-//       left: 2px;
-//       background: $color-back;
-//       box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
-//     }
-//   }
-//   &[type='range'] {
-//     &::-webkit-slider-thumb {
-//       background: $color-back-button;
-//       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-//     }
-//     &::-moz-range-thumb {
-//       background: $color-back-button;
-//       box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-//     }
-//     &:not(.not\:active) {
-//       &:focus {
-//         &::-webkit-slider-thumb {
-//           background: $color-back-button-focus;
-//         }
-//         &::-moz-range-thumb {
-//           background: $color-back-button-focus;
-//         }
-//       }
-//       &:active {
-//         &::-webkit-slider-thumb {
-//           background: $color-back-button-active;
-//         }
-//         &::-moz-range-thumb {
-//           background: $color-back-button-active;
-//         }
-//       }
-//     }
-//   }
-// }
+.input {
+  &[type='checkbox'] {
+    --fill-button--hover: #{$fill-items};
+    --fill-button: #{$fill-items};
+    &:checked {
+      &::before {
+        box-shadow: none;
+      }
+    }
+    &:focus {
+      --fill-button--active: #{darken($fill-items, 10%)};
+      --fill-button--focus: #{darken($fill-items, 10%)};
+    }
+  }
+  &[type='radio'] {
+    --fill-button--hover: #{$fill-item};
+    --fill-button: #{$fill-item};
+    &:focus {
+      --fill-button--active: #{darken($fill-item, 10%)};
+      --fill-button--focus: #{darken($fill-item, 10%)};
+    }
+  }
+  &[type='checkbox'],
+  &[type='radio'] {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .125);
+    &::before {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+    }
+  }
+}
 
 // label {
 //   &.is\:locked {
@@ -230,40 +155,38 @@ caption,
 //     > .input {
 //       &[type='checkbox'] {
 //         + span {
-//           color: darken($color-back-items, 10%);
+//           color: darken($fill-items, 10%);
 //         }
 //       }
 //       &[type='radio'] {
 //         + span {
-//           color: darken($color-back-item, 10%);
+//           color: darken($fill-item, 10%);
 //         }
 //       }
 //     }
 //   }
 // }
 
-// .field\:toggle {
-//   .input {
-//     &[type='checkbox'] {
-//       background: $color-back-toggle;
-//       &[disabled] {
-//         background: $color-secondary;
-//       }
-//       &::before {
-//         background: $color-back;
-//       }
-//       &:focus {
-//         background: darken($color-back-toggle, 10%);
-//       }
-//       &:checked {
-//         background: $color-back-toggle-active;
-//         &:focus {
-//           background: darken($color-back-toggle-active, 10%);
-//         }
-//       }
-//     }
-//   }
-// }
+.field\:toggle {
+  .input {
+    &[type='checkbox'] {
+      --fill-button--hover: #{$fill-toggle};
+      --fill-button: #{$fill-toggle};
+      &:focus {
+        --fill-button--active: #{darken($fill-toggle, 10%)};
+        --fill-button--focus: #{darken($fill-toggle, 10%)};
+      }
+      &:checked {
+        --fill-button--hover: #{$fill-toggle--checked};
+        --fill-button: #{$fill-toggle--checked};
+        &:focus {
+          --fill-button--active: #{darken($fill-toggle--checked, 10%)};
+          --fill-button--focus: #{darken($fill-toggle--checked, 10%)};
+        }
+      }
+    }
+  }
+}
 
 @media (min-width: 719px) {
   .lot\:bar {
