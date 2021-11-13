@@ -128,7 +128,9 @@ caption,
   color: var(--color-description);
 }
 
-fieldset {
+fieldset,
+.table td,
+.table th {
   border-color: var(--stroke-input);
 }
 

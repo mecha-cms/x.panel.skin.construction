@@ -1,11 +1,10 @@
 ---
 title: Panel Skin: Construction
 description: Control panel skin with yellow color domination.
+image: https://user-images.githubusercontent.com/1669261/141486160-32b5a723-9c89-467a-8c99-bef659c27c55.png
 author: Taufik Nurrohman
 type: Markdown
 version: 2.3.0
-
-image: https://user-images.githubusercontent.com/1669261/141486160-32b5a723-9c89-467a-8c99-bef659c27c55.png
 
 use:
   '.\lot\x\panel': 1
