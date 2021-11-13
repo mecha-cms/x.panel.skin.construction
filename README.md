@@ -10,7 +10,8 @@ Release Notes
 
 ### 2.3.0
 
- - Updated to use CSS variables in Panel 2.8.0.
+ - Removed _Roboto Condensed_ font styles. Font styles should be managed by [`panel.font`](https://github.com/mecha-cms/x.panel.font) extension in the future.
+ - Updated to use CSS variables from Panel 2.8.0.
 
 ### 2.2.0
 
