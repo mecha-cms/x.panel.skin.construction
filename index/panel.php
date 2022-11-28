@@ -1,30 +1,26 @@
 <?php
 
-// Add `is:main` class to the folder and link menu
-$_['lot']['bar']['lot'][0]['lot']['folder']['tags']['is:main'] = true;
-$_['lot']['bar']['lot'][0]['lot']['link']['tags']['is:main'] = true;
-
-$skin = $state->x->panel->skin ?? 'construction';
-
-// Add `construction` skin option
-if ('.state' === $_['path'] && 'g' === $_['task']) {
-    $_['lot']['desk']['lot']['form']['lot'][1]['lot']['tabs']['lot']['panel']['lot']['fields']['lot']['skin'] = [
-        'name' => 'state[x][panel][skin]',
-        'type' => 'option',
-        'value' => $skin,
-        'lot' => [
-            'construction' => 'Construction'
-        ],
-        'stack' => 30
-    ];
+// Disable this extension if `panel.skin` extension is disabled or removed ;)
+if (!isset($state->x->{'panel.skin'})) {
+    return $_;
 }
+
+$name = $state->x->panel->skin->name ?? "";
 
 // Load asset if current `skin` value is `construction`
-if ('construction' === $skin) {
-    $_['asset']['panel.skin.' . $skin] = [
+if ('construction' === $name) {
+    $_['asset']['panel.skin.' . $name] = [
         'id' => false,
-        'path' => stream_resolve_include_path(__DIR__ . DS . '..' . DS . 'lot' . DS . 'asset' . DS . 'css' . DS . 'index' . (defined('DEBUG') && DEBUG ? '.' : '.min.') . 'css'),
+        'path' => stream_resolve_include_path(__DIR__ . D . '..' . D . 'index' . (defined('TEST') && TEST ? '.' : '.min.') . 'css'),
         'stack' => 30
     ];
+    $_['is']['dark'] = false;
     $_['is']['light'] = true;
 }
+
+// Add `construction` skin to skin name selector
+if ('.state' === $_['path'] && 'get' === $_['task']) {
+    $_['lot']['desk']['lot']['form']['lot'][1]['lot']['tabs']['lot']['panel']['lot']['fields']['lot']['skin']['lot']['construction'] = 'Construction';
+}
+
+return $_;

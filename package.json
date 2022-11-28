@@ -1,10 +1,10 @@
 {
   "devDependencies": {
-    "@taufik-nurrohman/factory": "^1.0.2"
+    "@taufik-nurrohman/factory": "*"
   },
   "private": true,
   "scripts": {
-    "pack": "pack --clean=false --from=.github/source --to=."
+    "pack": "pack --clean=false --from=.factory --to=."
   },
   "type": "module"
 }
