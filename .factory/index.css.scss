@@ -95,6 +95,7 @@ $stroke: #888;
   --fill-input--disabled: #{lighten($fill-input, 10%)};
   --fill-input--read-only: #{lighten($fill-input, 10%)};
   --fill-input: #{$fill-input};
+  --fill-menu-link--active: #{darken($fill-menu-link--hover, 5%)};
   --fill-menu-link--current: #{$fill-menu-link--current};
   --fill-menu-link--hover: #{$fill-menu-link--hover};
   --fill-menu-status: #{$fill-bar-status};
@@ -109,7 +110,7 @@ $stroke: #888;
   --shadow-input--read-only: #{$shadow-input};
   --shadow-input: #{$shadow-input};
   --shadow-menu: #{$shadow-menu};
-  --shadow-option-picker__options: #{$shadow-menu};
+  --shadow-option-picker__options: #{$shadow-option-picker__options};
   --shadow-stack--current: #{$shadow-stack--current};
   --shadow-stack-link: #{$shadow-stack-link};
   --shadow-stack: #{$shadow-stack};
@@ -207,6 +208,28 @@ input {
     --shadow-button: inset 0 1px 1px rgba(0, 0, 0, .125);
     &::before {
       box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+    }
+  }
+  &::file-selector-button {
+    background: var(--fill-button);
+    border-color: var(--stroke-button);
+    box-shadow: var(--shadow-button);
+    color: var(--color-button);
+    @each $v in (hover, focus, active) {
+      &:#{$v} {
+        background: var(--fill-button--#{$v}, var(--fill-button));
+        border-color: var(--stroke-button--#{$v}, var(--stroke-button));
+        box-shadow: var(--shadow-button--#{$v}, var(--shadow-button));
+        color: var(--color-button--#{$v}, var(--color-button));
+      }
+    }
+  }
+  @each $v in (hover, focus, active) {
+    &:#{$v}::file-selector-button {
+      background: var(--fill-button--#{$v}, var(--fill-button));
+      border-color: var(--stroke-button--#{$v}, var(--stroke-button));
+      box-shadow: var(--shadow-button--#{$v}, var(--shadow-button));
+      color: var(--color-button--#{$v}, var(--color-button));
     }
   }
 }
@@ -317,10 +340,18 @@ input {
 .lot\:menu {
   a {
     &:hover,
-    &:focus,
-    &:active {
+    &:focus {
       --fill-menu-link--current: #{darken($fill-menu-link--current, 5%)};
     }
+    &:active {
+      --fill-menu-link--current: #{darken($fill-menu-link--current, 10%)};
+    }
+  }
+}
+
+.lot\:stack {
+  .title {
+    padding-left: 3px; // Same with `--shadow-stack` shadow’s x-offset
   }
 }
 
