@@ -5,7 +5,7 @@ icon: 'M2.53,19.65L3.87,20.21V11.18L1.44,17.04C1.03,18.06 1.5,19.23 2.53,19.65M2
 image: /lot/x/panel.skin.construction/index.png
 author: Taufik Nurrohman
 type: Markdown
-version: 2.3.0
+version: 2.4.0
 
 use:
   '.\lot\x\panel': 1
