@@ -8,7 +8,7 @@
   --color-bar: #999999;
   --color-button: #fff;
   --color-code-block: #e6e6e6;
-  --color-description: #666;
+  --color-description: #555;
   --color-input--invalid: #f00;
   --color-input--valid: #090;
   --color-input: #000;
@@ -46,7 +46,7 @@
   --fill-input--disabled: #ffffdd;
   --fill-input--read-only: #ffffdd;
   --fill-input: #ffa;
-  --fill-menu-link--active: #d5d5ff;
+  --fill-menu-link--active: #e4e4ff;
   --fill-menu-link--current: #d00;
   --fill-menu-link--hover: #eef;
   --fill-menu-status: #f00;
@@ -104,27 +104,27 @@
   --color-menu-link--focus: #900;
   --color-link--active: #900;
   --color-menu-link--active: #900;
-  --fill-file--active: #d5d5ff;
+  --fill-file--active: #e4e4ff;
   --fill-file--current: #fec;
   --fill-file--focus: #eef;
   --fill-file--hover: #eef;
-  --stroke-file--active: #d5d5ff;
+  --stroke-file--active: #e4e4ff;
   --stroke-file--current: #fec;
   --stroke-file--focus: #eef;
   --stroke-file--hover: #eef;
-  --fill-folder--active: #d5d5ff;
+  --fill-folder--active: #e4e4ff;
   --fill-folder--current: #fec;
   --fill-folder--focus: #eef;
   --fill-folder--hover: #eef;
-  --stroke-folder--active: #d5d5ff;
+  --stroke-folder--active: #e4e4ff;
   --stroke-folder--current: #fec;
   --stroke-folder--focus: #eef;
   --stroke-folder--hover: #eef;
-  --fill-page--active: #d5d5ff;
+  --fill-page--active: #e4e4ff;
   --fill-page--current: #fec;
   --fill-page--focus: #eef;
   --fill-page--hover: #eef;
-  --stroke-page--active: #d5d5ff;
+  --stroke-page--active: #e4e4ff;
   --stroke-page--current: #fec;
   --stroke-page--focus: #eef;
   --stroke-page--hover: #eef;
@@ -150,6 +150,10 @@ fieldset,
 table td,
 table th {
   border-color: var(--stroke-input);
+}
+
+table th {
+  background: #fec;
 }
 
 input[type=checkbox] {

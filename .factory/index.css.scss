@@ -1,7 +1,7 @@
 $color--disabled: #888;
 $color-bar-status: #fff;
 $color-button: #fff;
-$color-description: #666;
+$color-description: #555;
 $color-input--invalid: #f00;
 $color-input--valid: #090;
 $color-link--focus: #900;
@@ -95,7 +95,7 @@ $stroke: #888;
   --fill-input--disabled: #{lighten($fill-input, 10%)};
   --fill-input--read-only: #{lighten($fill-input, 10%)};
   --fill-input: #{$fill-input};
-  --fill-menu-link--active: #{darken($fill-menu-link--hover, 5%)};
+  --fill-menu-link--active: #{darken($fill-menu-link--hover, 2%)};
   --fill-menu-link--current: #{$fill-menu-link--current};
   --fill-menu-link--hover: #{$fill-menu-link--hover};
   --fill-menu-status: #{$fill-bar-status};
@@ -145,11 +145,11 @@ $stroke: #888;
     --color-menu-link--#{$v}: #{$color-link--focus};
   }
   @each $v in (file, folder, page) {
-    --fill-#{$v}--active: #{darken($fill-file--hover, 5%)};
+    --fill-#{$v}--active: #{darken($fill-file--hover, 2%)};
     --fill-#{$v}--current: #{$fill-file--current};
     --fill-#{$v}--focus: #{$fill-file--hover};
     --fill-#{$v}--hover: #{$fill-file--hover};
-    --stroke-#{$v}--active: #{darken($stroke-file--hover, 5%)};
+    --stroke-#{$v}--active: #{darken($stroke-file--hover, 2%)};
     --stroke-#{$v}--current: #{$stroke-file--current};
     --stroke-#{$v}--focus: #{$stroke-file--hover};
     --stroke-#{$v}--hover: #{$stroke-file--hover};
@@ -176,6 +176,10 @@ fieldset,
 table td,
 table th {
   border-color: var(--stroke-input);
+}
+
+table th {
+  background: #fec;
 }
 
 input {
@@ -277,7 +281,7 @@ input {
 }
 
 .as\:separator {
-  opacity: .125;
+  opacity: 0.125;
 }
 
 .lot\:bar {
