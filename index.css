@@ -19,6 +19,11 @@
   --color-menu-link--hover: #009;
   --color-menu-link: #009;
   --color-menu-status: #fff;
+  --color-menus-caret: gray;
+  --color-menus-link--current: #fff;
+  --color-menus-link--hover: #009;
+  --color-menus-link: #009;
+  --color-menus-status: #fff;
   --color-output: inherit;
   --color-stack-link--active: #900;
   --color-stack-link--focus: #900;
@@ -51,6 +56,11 @@
   --fill-menu-link--hover: #eef;
   --fill-menu-status: #f00;
   --fill-menu: #fff;
+  --fill-menus-link--active: #e4e4ff;
+  --fill-menus-link--current: #d00;
+  --fill-menus-link--hover: #eef;
+  --fill-menus-status: #f00;
+  --fill-menus: #fff;
   --fill-tag-picker__tag--disabled: #ff3333;
   --fill-tag-picker__tag--focus: #cc0000;
   --fill-tag-picker__tag--read-only: #ff1a1a;
@@ -349,6 +359,14 @@ input:active::file-selector-button {
 }
 .lot\:menu a:active {
   --fill-menu-link--current: #aa0000;
+}
+
+.lot\:menus a:hover,
+.lot\:menus a:focus {
+  --fill-menus-link--current: #c40000;
+}
+.lot\:menus a:active {
+  --fill-menus-link--current: #aa0000;
 }
 
 .lot\:stack .title {

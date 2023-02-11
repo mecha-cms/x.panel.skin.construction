@@ -63,11 +63,13 @@ $stroke: #888;
   --color-input: #{$color};
   --color-link--hover: #{$color-link};
   --color-link: #{$color-link};
-  --color-menu-caret: #{darken($fill, 50%)};
-  --color-menu-link--current: #{$color-menu-link--current};
-  --color-menu-link--hover: #{$color-link};
-  --color-menu-link: #{$color-link};
-  --color-menu-status: #{$color-bar-status};
+  @each $v in (menu, menus) {
+    --color-#{$v}-caret: #{darken($fill, 50%)};
+    --color-#{$v}-link--current: #{$color-menu-link--current};
+    --color-#{$v}-link--hover: #{$color-link};
+    --color-#{$v}-link: #{$color-link};
+    --color-#{$v}-status: #{$color-bar-status};
+  }
   --color-output: inherit;
   --color-stack-link--active: #{$color-link--focus};
   --color-stack-link--focus: #{$color-link--focus};
@@ -95,11 +97,13 @@ $stroke: #888;
   --fill-input--disabled: #{lighten($fill-input, 10%)};
   --fill-input--read-only: #{lighten($fill-input, 10%)};
   --fill-input: #{$fill-input};
-  --fill-menu-link--active: #{darken($fill-menu-link--hover, 2%)};
-  --fill-menu-link--current: #{$fill-menu-link--current};
-  --fill-menu-link--hover: #{$fill-menu-link--hover};
-  --fill-menu-status: #{$fill-bar-status};
-  --fill-menu: #{$fill};
+  @each $v in (menu, menus) {
+    --fill-#{$v}-link--active: #{darken($fill-menu-link--hover, 2%)};
+    --fill-#{$v}-link--current: #{$fill-menu-link--current};
+    --fill-#{$v}-link--hover: #{$fill-menu-link--hover};
+    --fill-#{$v}-status: #{$fill-bar-status};
+    --fill-#{$v}: #{$fill};
+  }
   --fill-tag-picker__tag--disabled: #{lighten($fill-tag-picker__tag, 10%)};
   --fill-tag-picker__tag--focus: #{darken($fill-tag-picker__tag, 10%)};
   --fill-tag-picker__tag--read-only: #{lighten($fill-tag-picker__tag, 5%)};
@@ -349,6 +353,18 @@ input {
     }
     &:active {
       --fill-menu-link--current: #{darken($fill-menu-link--current, 10%)};
+    }
+  }
+}
+
+.lot\:menus {
+  a {
+    &:hover,
+    &:focus {
+      --fill-menus-link--current: #{darken($fill-menu-link--current, 5%)};
+    }
+    &:active {
+      --fill-menus-link--current: #{darken($fill-menu-link--current, 10%)};
     }
   }
 }
