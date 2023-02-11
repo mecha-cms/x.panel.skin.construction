@@ -166,87 +166,87 @@ table th {
   background: #fec;
 }
 
-input[type=checkbox] {
+input.is\:host[type=checkbox] {
   --fill-button--hover: #090;
   --fill-button: #090;
 }
-input[type=checkbox]:checked::before {
+input.is\:host[type=checkbox]:checked::before {
   box-shadow: none;
 }
-input[type=checkbox]:focus {
+input.is\:host[type=checkbox]:focus {
   --fill-button--focus: #006600;
 }
-input[type=checkbox]:active {
+input.is\:host[type=checkbox]:active {
   --fill-button--active: #006600;
 }
-input[type=radio] {
+input.is\:host[type=radio] {
   --fill-button--hover: #08a;
   --fill-button: #08a;
 }
-input[type=radio]:focus {
+input.is\:host[type=radio]:focus {
   --fill-button--focus: #005f77;
 }
-input[type=radio]:active {
+input.is\:host[type=radio]:active {
   --fill-button--active: #005f77;
 }
-input[type=checkbox],
-input[type=radio] {
+input.is\:host[type=checkbox],
+input.is\:host[type=radio] {
   --fill-button--disabled: #888;
   --shadow-button: inset 0 1px 1px rgba(0, 0, 0, .125);
 }
-input[type=checkbox]::before,
-input[type=radio]::before {
+input.is\:host[type=checkbox]::before,
+input.is\:host[type=radio]::before {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
 }
-input::file-selector-button {
+input.is\:host::file-selector-button {
   background: var(--fill-button);
   border-color: var(--stroke-button);
   box-shadow: var(--shadow-button);
   color: var(--color-button);
 }
-input::file-selector-button:hover {
+input.is\:host::file-selector-button:hover {
   background: var(--fill-button--hover, var(--fill-button));
   border-color: var(--stroke-button--hover, var(--stroke-button));
   box-shadow: var(--shadow-button--hover, var(--shadow-button));
   color: var(--color-button--hover, var(--color-button));
 }
-input::file-selector-button:focus {
+input.is\:host::file-selector-button:focus {
   background: var(--fill-button--focus, var(--fill-button));
   border-color: var(--stroke-button--focus, var(--stroke-button));
   box-shadow: var(--shadow-button--focus, var(--shadow-button));
   color: var(--color-button--focus, var(--color-button));
 }
-input::file-selector-button:active {
+input.is\:host::file-selector-button:active {
   background: var(--fill-button--active, var(--fill-button));
   border-color: var(--stroke-button--active, var(--stroke-button));
   box-shadow: var(--shadow-button--active, var(--shadow-button));
   color: var(--color-button--active, var(--color-button));
 }
-input:hover::file-selector-button {
+input.is\:host:hover::file-selector-button {
   background: var(--fill-button--hover, var(--fill-button));
   border-color: var(--stroke-button--hover, var(--stroke-button));
   box-shadow: var(--shadow-button--hover, var(--shadow-button));
   color: var(--color-button--hover, var(--color-button));
 }
-input:focus::file-selector-button {
+input.is\:host:focus::file-selector-button {
   background: var(--fill-button--focus, var(--fill-button));
   border-color: var(--stroke-button--focus, var(--stroke-button));
   box-shadow: var(--shadow-button--focus, var(--shadow-button));
   color: var(--color-button--focus, var(--color-button));
 }
-input:active::file-selector-button {
+input.is\:host:active::file-selector-button {
   background: var(--fill-button--active, var(--fill-button));
   border-color: var(--stroke-button--active, var(--stroke-button));
   box-shadow: var(--shadow-button--active, var(--shadow-button));
   color: var(--color-button--active, var(--color-button));
 }
 
-[pattern]:focus:valid,
-[required]:focus:valid {
+[pattern].is\:host:focus:valid,
+[required].is\:host:focus:valid {
   --stroke--focus-visible: rgba(0, 153, 0, 0.25);
 }
-[pattern]:focus:invalid,
-[required]:focus:invalid {
+[pattern].is\:host:focus:invalid,
+[required].is\:host:focus:invalid {
   --stroke--focus-visible: rgba(255, 0, 0, 0.25);
 }
 
