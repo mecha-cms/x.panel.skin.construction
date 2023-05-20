@@ -241,6 +241,14 @@ input {
         color: var(--color-button--#{$v}, var(--color-button));
       }
     }
+    &:disabled {
+      &::file-selector-button {
+        background: var(--fill-button--disabled, var(--fill-button));
+        border-color: var(--stroke-button--disabled, var(--stroke-button));
+        box-shadow: var(--shadow-button--disabled, var(--shadow-button));
+        color: var(--color-button--disabled, var(--color-button));
+      }
+    }
   }
 }
 
