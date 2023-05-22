@@ -156,12 +156,6 @@ figcaption {
   color: var(--color-description);
 }
 
-fieldset,
-table td,
-table th {
-  border-color: var(--stroke-input);
-}
-
 table th {
   background: #fec;
 }
