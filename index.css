@@ -160,93 +160,93 @@ table th {
   background: #fec;
 }
 
-input.is\:host[type=checkbox] {
+.input[type=checkbox] {
   --fill-button--hover: #090;
   --fill-button: #090;
 }
-input.is\:host[type=checkbox]:checked::before {
+.input[type=checkbox]:checked::before {
   box-shadow: none;
 }
-input.is\:host[type=checkbox]:focus {
+.input[type=checkbox]:focus {
   --fill-button--focus: #006600;
 }
-input.is\:host[type=checkbox]:active {
+.input[type=checkbox]:active {
   --fill-button--active: #006600;
 }
-input.is\:host[type=radio] {
+.input[type=radio] {
   --fill-button--hover: #08a;
   --fill-button: #08a;
 }
-input.is\:host[type=radio]:focus {
+.input[type=radio]:focus {
   --fill-button--focus: #005f77;
 }
-input.is\:host[type=radio]:active {
+.input[type=radio]:active {
   --fill-button--active: #005f77;
 }
-input.is\:host[type=checkbox],
-input.is\:host[type=radio] {
+.input[type=checkbox],
+.input[type=radio] {
   --fill-button--disabled: #888;
   --shadow-button: inset 0 1px 1px rgba(0, 0, 0, .125);
 }
-input.is\:host[type=checkbox]::before,
-input.is\:host[type=radio]::before {
+.input[type=checkbox]::before,
+.input[type=radio]::before {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
 }
-input.is\:host::file-selector-button {
+.input::file-selector-button {
   background: var(--fill-button);
   border-color: var(--stroke-button);
   box-shadow: var(--shadow-button);
   color: var(--color-button);
 }
-input.is\:host::file-selector-button:hover {
+.input::file-selector-button:hover {
   background: var(--fill-button--hover, var(--fill-button));
   border-color: var(--stroke-button--hover, var(--stroke-button));
   box-shadow: var(--shadow-button--hover, var(--shadow-button));
   color: var(--color-button--hover, var(--color-button));
 }
-input.is\:host::file-selector-button:focus {
+.input::file-selector-button:focus {
   background: var(--fill-button--focus, var(--fill-button));
   border-color: var(--stroke-button--focus, var(--stroke-button));
   box-shadow: var(--shadow-button--focus, var(--shadow-button));
   color: var(--color-button--focus, var(--color-button));
 }
-input.is\:host::file-selector-button:active {
+.input::file-selector-button:active {
   background: var(--fill-button--active, var(--fill-button));
   border-color: var(--stroke-button--active, var(--stroke-button));
   box-shadow: var(--shadow-button--active, var(--shadow-button));
   color: var(--color-button--active, var(--color-button));
 }
-input.is\:host:hover::file-selector-button {
+.input:hover::file-selector-button {
   background: var(--fill-button--hover, var(--fill-button));
   border-color: var(--stroke-button--hover, var(--stroke-button));
   box-shadow: var(--shadow-button--hover, var(--shadow-button));
   color: var(--color-button--hover, var(--color-button));
 }
-input.is\:host:focus::file-selector-button {
+.input:focus::file-selector-button {
   background: var(--fill-button--focus, var(--fill-button));
   border-color: var(--stroke-button--focus, var(--stroke-button));
   box-shadow: var(--shadow-button--focus, var(--shadow-button));
   color: var(--color-button--focus, var(--color-button));
 }
-input.is\:host:active::file-selector-button {
+.input:active::file-selector-button {
   background: var(--fill-button--active, var(--fill-button));
   border-color: var(--stroke-button--active, var(--stroke-button));
   box-shadow: var(--shadow-button--active, var(--shadow-button));
   color: var(--color-button--active, var(--color-button));
 }
-input.is\:host:disabled::file-selector-button {
+.input:disabled::file-selector-button {
   background: var(--fill-button--disabled, var(--fill-button));
   border-color: var(--stroke-button--disabled, var(--stroke-button));
   box-shadow: var(--shadow-button--disabled, var(--shadow-button));
   color: var(--color-button--disabled, var(--color-button));
 }
 
-[pattern].is\:host:focus:valid,
-[required].is\:host:focus:valid {
+[pattern]:focus:valid,
+[required]:focus:valid {
   --stroke--focus-visible: rgba(0, 153, 0, 0.25);
 }
-[pattern].is\:host:focus:invalid,
-[required].is\:host:focus:invalid {
+[pattern]:focus:invalid,
+[required]:focus:invalid {
   --stroke--focus-visible: rgba(255, 0, 0, 0.25);
 }
 
