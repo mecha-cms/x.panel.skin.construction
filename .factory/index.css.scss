@@ -49,13 +49,13 @@ $stroke: #888;
 
 :root {
   --color--disabled: #{$color--disabled};
-  --color-bar-caret: #{darken($fill, 50%)};
   --color-bar-link--disabled: #{darken($fill, 20%)};
   --color-bar-link--hover: #{darken($fill, 20%)};
   --color-bar-link: #{darken($fill, 20%)};
   --color-bar-status: #{$color-bar-status};
   --color-bar: #{darken($fill, 40%)};
   --color-button: #{$color-button};
+  --color-caret: #{darken($fill, 50%)};
   --color-code-block: #{darken($fill, 10%)};
   --color-description: #{$color-description};
   --color-input--invalid: #{$color-input--invalid};
@@ -64,12 +64,13 @@ $stroke: #888;
   --color-link--hover: #{$color-link};
   --color-link: #{$color-link};
   @each $v in (menu, menus) {
-    --color-#{$v}-caret: #{darken($fill, 50%)};
     --color-#{$v}-link--current: #{$color-menu-link--current};
     --color-#{$v}-link--hover: #{$color-link};
     --color-#{$v}-link: #{$color-link};
     --color-#{$v}-status: #{$color-bar-status};
   }
+  --arc-input__file-selector-button: var(--arc-button, var(--arc, 0));
+  --color-input__file-selector-button: var(--color-button, var(--color, inherit));
   --color-output: inherit;
   --color-stack-link--active: #{$color-link--focus};
   --color-stack-link--focus: #{$color-link--focus};
@@ -97,6 +98,9 @@ $stroke: #888;
   --fill-input--disabled: #{lighten($fill-input, 10%)};
   --fill-input--read-only: #{lighten($fill-input, 10%)};
   --fill-input: #{$fill-input};
+  --fill-input__file-selector-button: var(--fill-button, var(--fill, none));
+  --shadow-input__file-selector-button: var(--shadow-button, var(--shadow, none));
+  --stroke-input__file-selector-button: var(--stroke-button, var(--stroke, transparent));
   @each $v in (menu, menus) {
     --fill-#{$v}-link--active: #{darken($fill-menu-link--hover, 2%)};
     --fill-#{$v}-link--current: #{$fill-menu-link--current};
@@ -133,7 +137,10 @@ $stroke: #888;
   }
   @each $v in (hover, focus, active, disabled) {
     --color-button--#{$v}: #{$color-button};
+    --color-input__file-selector-button--#{$v}: var(--color-button--#{$v}, var(--color-button, var(--color--#{$v}, var(--color, inherit))));
+    --fill-input__file-selector-button--#{$v}: var(--fill-button--#{$v}, var(--fill-button, var(--fill--#{$v}, var(--fill, none))));
     --shadow-input--#{$v}: #{$shadow-input};
+    --stroke-input__file-selector-button--#{$v}: var(--stroke-button--#{$v}, var(--stroke-button, var(--stroke--#{$v}, var(--stroke, transparent))));
   }
   @each $v in (focus, active) {
     --fill-button--#{$v}: #{$fill-button--focus};
@@ -184,6 +191,24 @@ table th {
   &[type='checkbox'] {
     --fill-button--hover: #{$fill-items};
     --fill-button: #{$fill-items};
+    &[role='switch'] {
+      --fill-button--hover: #{$fill-toggle};
+      --fill-button: #{$fill-toggle};
+      @each $v in (focus, active) {
+        &:#{$v} {
+          --fill-button--#{$v}: #{darken($fill-toggle, 10%)};
+        }
+      }
+      &:checked {
+        --fill-button--hover: #{$fill-toggle--checked};
+        --fill-button: #{$fill-toggle--checked};
+        @each $v in (focus, active) {
+          &:#{$v} {
+            --fill-button--#{$v}: #{darken($fill-toggle--checked, 10%)};
+          }
+        }
+      }
+    }
     &:checked {
       &::before {
         box-shadow: none;
@@ -212,36 +237,6 @@ table th {
       box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
     }
   }
-  &::file-selector-button {
-    background: var(--fill-button);
-    border-color: var(--stroke-button);
-    box-shadow: var(--shadow-button);
-    color: var(--color-button);
-    @each $v in (hover, focus, active) {
-      &:#{$v} {
-        background: var(--fill-button--#{$v}, var(--fill-button));
-        border-color: var(--stroke-button--#{$v}, var(--stroke-button));
-        box-shadow: var(--shadow-button--#{$v}, var(--shadow-button));
-        color: var(--color-button--#{$v}, var(--color-button));
-      }
-    }
-  }
-  @each $v in (hover, focus, active) {
-    &:#{$v}::file-selector-button {
-      background: var(--fill-button--#{$v}, var(--fill-button));
-      border-color: var(--stroke-button--#{$v}, var(--stroke-button));
-      box-shadow: var(--shadow-button--#{$v}, var(--shadow-button));
-      color: var(--color-button--#{$v}, var(--color-button));
-    }
-  }
-  &:disabled {
-    &::file-selector-button {
-      background: var(--fill-button--disabled, var(--fill-button));
-      border-color: var(--stroke-button--disabled, var(--stroke-button));
-      box-shadow: var(--shadow-button--disabled, var(--shadow-button));
-      color: var(--color-button--disabled, var(--color-button));
-    }
-  }
 }
 
 [pattern],
@@ -267,8 +262,11 @@ table th {
 }
 
 .is\:folder {
+  &::before {
+    --stroke-folder-icon: transparent;
+  }
   &::after {
-    --fill-folder-icon: #{darken($fill-folder-icon, 15%)};
+    --stroke-folder-icon: #{darken($fill-folder-icon, 15%)};
   }
 }
 
@@ -299,31 +297,6 @@ table th {
         &:#{$v} {
           --color-input--#{$v}: var(--fill);
           --fill-input--#{$v}: var(--color);
-        }
-      }
-    }
-  }
-}
-
-.lot\:field {
-  &.type\:toggle {
-    input {
-      &[type='checkbox'] {
-        --fill-button--hover: #{$fill-toggle};
-        --fill-button: #{$fill-toggle};
-        @each $v in (focus, active) {
-          &:#{$v} {
-            --fill-button--#{$v}: #{darken($fill-toggle, 10%)};
-          }
-        }
-        &:checked {
-          --fill-button--hover: #{$fill-toggle--checked};
-          --fill-button: #{$fill-toggle--checked};
-          @each $v in (focus, active) {
-            &:#{$v} {
-              --fill-button--#{$v}: #{darken($fill-toggle--checked, 10%)};
-            }
-          }
         }
       }
     }
