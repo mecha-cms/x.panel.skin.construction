@@ -7,7 +7,7 @@ if (!isset($state->x->{'panel.skin'})) {
 
 $name = $state->x->panel->skin->name ?? "";
 
-// Load asset if current `skin` value is `construction`
+// Load asset if current `skin.name` value is `construction`
 if ('construction' === $name) {
     $_['asset']['panel.skin.' . $name] = [
         'id' => false,

@@ -9,7 +9,9 @@
   --color-caret: gray;
   --color-code-block: #e6e6e6;
   --color-description: #555;
+  --color-input--in-range: #090;
   --color-input--invalid: #f00;
+  --color-input--out-of-range: #f00;
   --color-input--valid: #090;
   --color-input: #000;
   --color-link--hover: #009;
@@ -84,7 +86,9 @@
   --shadow-tag-picker__tag--disabled: none;
   --shadow-tag-picker__tag: 0 1px 1px rgba(0, 0, 0, 0.5);
   --stroke-file-icon: #000;
+  --stroke-input--in-range: #090;
   --stroke-input--invalid: #f00;
+  --stroke-input--out-of-range: #f00;
   --stroke-input--valid: #090;
   --stroke-input: #000;
   --stroke: #888;
@@ -221,11 +225,17 @@ table th {
 .input[type=checkbox],
 .input[type=radio] {
   --fill-button--disabled: #888;
-  --shadow-button: inset 0 1px 1px rgba(0, 0, 0, .125);
+  --shadow-button: inset 0 1px 1px rgba(0, 0, 0, 0.125);
 }
 .input[type=checkbox]::before,
 .input[type=radio]::before {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+}
+.input[type=number]:focus:in-range {
+  --stroke--focus-visible: rgba(0, 153, 0, 0.25);
+}
+.input[type=number]:focus:out-of-range {
+  --stroke--focus-visible: rgba(255, 0, 0, 0.25);
 }
 
 [pattern]:focus:valid,

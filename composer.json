@@ -1,0 +1,8 @@
+{
+  "description": "Control panel skin with yellow color domination.",
+  "license": "GPL-3.0-or-later",
+  "name": "mecha-cms/x.panel.skin.construction",
+  "require": {
+    "mecha-cms/x.panel.skin": "^2.0.0"
+  }
+}

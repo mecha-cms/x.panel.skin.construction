@@ -2,7 +2,9 @@ $color--disabled: #888;
 $color-bar-status: #fff;
 $color-button: #fff;
 $color-description: #555;
+$color-input--in-range: #090;
 $color-input--invalid: #f00;
+$color-input--out-of-range: #f00;
 $color-input--valid: #090;
 $color-link--focus: #900;
 $color-link: #009;
@@ -58,7 +60,9 @@ $stroke: #888;
   --color-caret: #{darken($fill, 50%)};
   --color-code-block: #{darken($fill, 10%)};
   --color-description: #{$color-description};
+  --color-input--in-range: #{$color-input--in-range};
   --color-input--invalid: #{$color-input--invalid};
+  --color-input--out-of-range: #{$color-input--out-of-range};
   --color-input--valid: #{$color-input--valid};
   --color-input: #{$color};
   --color-link--hover: #{$color-link};
@@ -128,7 +132,9 @@ $stroke: #888;
   --shadow-tag-picker__tag--disabled: none;
   --shadow-tag-picker__tag: #{$shadow-button};
   --stroke-file-icon: #{$color};
+  --stroke-input--in-range: #{$color-input--in-range};
   --stroke-input--invalid: #{$color-input--invalid};
+  --stroke-input--out-of-range: #{$color-input--out-of-range};
   --stroke-input--valid: #{$color-input--valid};
   --stroke-input: #{$color};
   --stroke: #{$stroke};
@@ -232,9 +238,19 @@ table th {
   &[type='checkbox'],
   &[type='radio'] {
     --fill-button--disabled: #{$color--disabled};
-    --shadow-button: inset 0 1px 1px rgba(0, 0, 0, .125);
+    --shadow-button: inset 0 1px 1px rgba(0, 0, 0, 0.125);
     &::before {
-      box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+    }
+  }
+  &[type='number'] {
+    &:focus {
+      &:in-range {
+        --stroke--focus-visible: #{rgba($color-input--in-range, 0.25)};
+      }
+      &:out-of-range {
+        --stroke--focus-visible: #{rgba($color-input--out-of-range, 0.25)};
+      }
     }
   }
 }
@@ -243,10 +259,10 @@ table th {
 [required] {
   &:focus {
     &:valid {
-      --stroke--focus-visible: #{rgba($color-input--valid, .25)};
+      --stroke--focus-visible: #{rgba($color-input--valid, 0.25)};
     }
     &:invalid {
-      --stroke--focus-visible: #{rgba($color-input--invalid, .25)};
+      --stroke--focus-visible: #{rgba($color-input--invalid, 0.25)};
     }
   }
 }
