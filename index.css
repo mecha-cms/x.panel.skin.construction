@@ -263,6 +263,10 @@ table th {
   color: var(--color-alert--success, --color-alert);
 }
 
+.as\:separator {
+  opacity: 0.125;
+}
+
 .is\:folder::before {
   --stroke-folder-icon: transparent;
 }
@@ -298,10 +302,6 @@ table th {
 .lot\:page:active {
   --fill-page--current: #ffdd99;
   --stroke-page--current: #ffdd99;
-}
-
-.as\:separator {
-  opacity: 0.125;
 }
 
 .lot\:bar .lot\:field input {
@@ -350,6 +350,11 @@ table th {
 
 .lot\:stack .title {
   padding-left: 3px;
+}
+
+.not\:active {
+  --color-code: var(--color--disabled);
+  --color-link: var(--color-link--disabled);
 }
 
 @media (min-width: 719px) {

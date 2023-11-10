@@ -277,6 +277,10 @@ table th {
   }
 }
 
+.as\:separator {
+  opacity: 0.125;
+}
+
 .is\:folder {
   &::before {
     --stroke-folder-icon: transparent;
@@ -298,10 +302,6 @@ table th {
       --stroke-#{$v}--current: #{darken($stroke-file--current, 10%)};
     }
   }
-}
-
-.as\:separator {
-  opacity: 0.125;
 }
 
 .lot\:bar {
@@ -364,6 +364,11 @@ table th {
   .title {
     padding-left: 3px; // Same with `--shadow-stack` shadow’s x-offset
   }
+}
+
+.not\:active {
+  --color-code: var(--color--disabled);
+  --color-link: var(--color-link--disabled);
 }
 
 @media (min-width: 719px) {
