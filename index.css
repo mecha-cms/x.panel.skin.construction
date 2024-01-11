@@ -55,6 +55,8 @@
   --fill-input: #ffa;
   --fill-input__file-selector-button: var(--fill-button, var(--fill, none));
   --shadow-input__file-selector-button: var(--shadow-button, var(--shadow, none));
+  --stroke-button--hover: #009;
+  --stroke-button: #009;
   --stroke-input__file-selector-button: var(--stroke-button, var(--stroke, transparent));
   --fill-menu-link--active: #e4e4ff;
   --fill-menu-link--current: #d00;
@@ -116,7 +118,9 @@
   --shadow-input--disabled: inset 0 1px 1px rgba(0, 0, 0, 0.25);
   --stroke-input__file-selector-button--disabled: var(--stroke-button--disabled, var(--stroke-button, var(--stroke--disabled, var(--stroke, transparent))));
   --fill-button--focus: #900;
+  --stroke-button--focus: #900;
   --fill-button--active: #900;
+  --stroke-button--active: #900;
   --color-input--hover: #000;
   --fill-input--hover: #ffa;
   --shadow-input: inset 0 1px 1px rgba(0, 0, 0, 0.25);
@@ -231,19 +235,25 @@ table th {
 .input[type=radio]::before {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
 }
-.input[type=number]:focus:in-range {
-  --stroke--focus-visible: rgba(0, 153, 0, 0.25);
-}
-.input[type=number]:focus:out-of-range {
+
+.input[pattern]:focus:invalid,
+.input[required]:focus:invalid,
+.textarea[pattern]:focus:invalid,
+.textarea[required]:focus:invalid {
   --stroke--focus-visible: rgba(255, 0, 0, 0.25);
 }
-
-[pattern]:focus:valid,
-[required]:focus:valid {
+.input[pattern]:focus:valid,
+.input[required]:focus:valid,
+.textarea[pattern]:focus:valid,
+.textarea[required]:focus:valid {
   --stroke--focus-visible: rgba(0, 153, 0, 0.25);
 }
-[pattern]:focus:invalid,
-[required]:focus:invalid {
+.input:focus:in-range,
+.textarea:focus:in-range {
+  --stroke--focus-visible: rgba(0, 153, 0, 0.25);
+}
+.input:focus:out-of-range,
+.textarea:focus:out-of-range {
   --stroke--focus-visible: rgba(255, 0, 0, 0.25);
 }
 

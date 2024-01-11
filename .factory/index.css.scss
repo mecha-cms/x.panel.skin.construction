@@ -45,6 +45,8 @@ $shadow-stack: inset 3px 0 0 #fcc;
 $shadow-tab--current: inset 0 3px 0 #ccf;
 $shadow-tab-link: inset 0 3px 0 #cfc;
 $shadow-tab: inset 0 3px 0 #fcc;
+$stroke-button--focus: #900;
+$stroke-button: #009;
 $stroke-file--current: #fec;
 $stroke-file--hover: #eef;
 $stroke: #888;
@@ -104,6 +106,8 @@ $stroke: #888;
   --fill-input: #{$fill-input};
   --fill-input__file-selector-button: var(--fill-button, var(--fill, none));
   --shadow-input__file-selector-button: var(--shadow-button, var(--shadow, none));
+  --stroke-button--hover: #{$stroke-button};
+  --stroke-button: #{$stroke-button};
   --stroke-input__file-selector-button: var(--stroke-button, var(--stroke, transparent));
   @each $v in (menu, menus) {
     --fill-#{$v}-link--active: #{darken($fill-menu-link--hover, 2%)};
@@ -150,6 +154,7 @@ $stroke: #888;
   }
   @each $v in (focus, active) {
     --fill-button--#{$v}: #{$fill-button--focus};
+    --stroke-button--#{$v}: #{$stroke-button--focus};
   }
   @each $v in (hover, focus, active) {
     --color-input--#{$v}: #{$color};
@@ -243,26 +248,27 @@ table th {
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
     }
   }
-  &[type='number'] {
+}
+
+.input,
+.textarea {
+  &[pattern],
+  &[required] {
     &:focus {
-      &:in-range {
-        --stroke--focus-visible: #{rgba($color-input--in-range, 0.25)};
+      &:invalid {
+        --stroke--focus-visible: #{rgba($color-input--invalid, 0.25)};
       }
-      &:out-of-range {
-        --stroke--focus-visible: #{rgba($color-input--out-of-range, 0.25)};
+      &:valid {
+        --stroke--focus-visible: #{rgba($color-input--valid, 0.25)};
       }
     }
   }
-}
-
-[pattern],
-[required] {
   &:focus {
-    &:valid {
-      --stroke--focus-visible: #{rgba($color-input--valid, 0.25)};
+    &:in-range {
+      --stroke--focus-visible: #{rgba($color-input--in-range, 0.25)};
     }
-    &:invalid {
-      --stroke--focus-visible: #{rgba($color-input--invalid, 0.25)};
+    &:out-of-range {
+      --stroke--focus-visible: #{rgba($color-input--out-of-range, 0.25)};
     }
   }
 }
